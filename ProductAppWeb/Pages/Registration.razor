@@ -1,0 +1,29 @@
+﻿@page "/login"
+
+@using ProductAppWeb.Data
+@inject Microsoft.AspNetCore.Components.NavigationManager NavigationManager;
+@inject User user
+
+<div class="Registration">
+    <p><b>Имя:</b></p>
+    <p><input type="text" @bind-value="user.Name" /></p>
+    <p><b>Логин:</b></p>
+    <p><input type="text" @bind-value="user.Login" /></p>
+    <p><b>Пароль:</b></p>
+    <p><input type="text" @bind-value="user.Password" /></p>
+</div>
+@*
+<button class="btn btn-primary" @onclick="Registr">Registration</button>*@
+
+@code {
+    public static List<User> userList;
+    private string Name;
+    private string Login;
+    private string Password;
+
+    public void Registr ()
+    {
+        user = new User(Name, Login, Password);
+        NavigationManager.NavigateTo("/fetchdata");
+    }
+}

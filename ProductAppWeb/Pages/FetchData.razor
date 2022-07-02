@@ -1,0 +1,15 @@
+﻿@page "/fetchdata"
+
+@using ProductAppWeb.Data
+@inject User User
+
+<div class="Registration">
+    <h1>Личный Кабинет</h1>
+    <p><input type="text" @bind-value="User.Name" /></p>
+    <p><input type="text" @bind-value="User.Login" /></p>
+</div>
+
+@code {
+    List<User> user = User.GetClient();
+}
+

@@ -1,0 +1,28 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+<p>@text</p>
+
+<input @bind="@text" @bind:event="oninput"/>
+
+
+<button class="btn btn-primary" @onclick="IncrementCount" @onfocus="ShowText">Click me</button>
+
+@code {
+    private int currentCount = 0;
+    private string text = null;
+
+    private async Task IncrementCount(MouseEventArgs e)
+    {
+        await Task.Delay(500);
+        if (e.CtrlKey == true) currentCount += 10;
+        else currentCount++;
+    }
+
+    private void ShowText(FocusEventArgs f)
+    {
+        
+    }
+}
